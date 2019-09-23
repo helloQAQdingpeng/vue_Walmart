@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+
 
 Vue.use(Router)
 
@@ -9,17 +9,39 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/admin',
       name: 'home',
-      component: Home
+      component: () => import('./views/admin/Home.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+      path: '/admin/category',
+      name: 'category',
+      component: () => import('./views/admin/Category/Home.vue')
+    },
+    {
+      path: '/admin/product',
+      name: 'product',
+      component: () => import('./views/admin/Product/Home.vue')
+    },
+    {
+      path: '/admin/product/increase',
+      name: 'increase',
+      component: () => import('./views/admin/Product/Increase.vue')
+    },
+    {
+      path: '/admin/product/compile/:id',
+      name: 'compile',
+      component: () => import('./views/admin/Product/Compile.vue')
+    },
+    {
+      path: '/admin/attestation/logon',
+      name: 'logon',
+      component: () => import('./views/admin/Attestation/Logon.vue')
+    },
+    {
+      path: '/admin/attestation/registered',
+      name: 'registered',
+      component: () => import('./views/admin/Attestation/Registered.vue')
+    },
   ]
 })
